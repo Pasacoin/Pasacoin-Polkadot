@@ -1,0 +1,537 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "MontoIncorrecto",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NoInvitado",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SalaFinalizada",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SalaLlena",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SalaNoExiste",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SalaYaExiste",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SoloOrganizador",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SorteoNoRealizado",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SorteoYaRealizado",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "TransferenciaFallida",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "YaAporto",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "YaEsParticipante",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "YaRecibio",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "participante",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "monto",
+						"type": "uint256"
+					}
+				],
+				"name": "AporteRealizado",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficiario",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "monto",
+						"type": "uint256"
+					}
+				],
+				"name": "PagoDisponible",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "participante",
+						"type": "address"
+					}
+				],
+				"name": "ParticipanteUnido",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "organizador",
+						"type": "address"
+					}
+				],
+				"name": "SalaCreada",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "SorteoRealizado",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "numeroParticipantes",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoAportar",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "fechaInicio",
+						"type": "uint32"
+					}
+				],
+				"name": "crearSala",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "esInvitado",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"internalType": "address[]",
+						"name": "participantesInvitados",
+						"type": "address[]"
+					}
+				],
+				"name": "invitarParticipantes",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "obtenerParticipantes",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "wallet",
+								"type": "address"
+							},
+							{
+								"internalType": "uint8",
+								"name": "numTurno",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "haRecibido",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "haAportadoRondaActual",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct Pasanaku.Participante[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "obtenerPendienteRetiro",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "obtenerSala",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "obtenerSalasUsuario",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "obtenerTransacciones",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "from",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "to",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monto",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint32",
+								"name": "fecha",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint8",
+								"name": "ronda",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "esPago",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct Pasanaku.Transaccion[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "obtenerTurnoUsuario",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "realizarAporte",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "realizarSorteo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "retirarFondos",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hashId",
+						"type": "string"
+					}
+				],
+				"name": "unirseASala",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Pasanaku.sol": "Pasanaku"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Pasanaku.sol": {
+			"keccak256": "0xa54a53414bdf3412dd86eb1400c4f5a31f8cbec2c0a66f09314dd0d4b370559e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b16fa0915c62eb2bf4e4465216b5e1f05531a8dbee14993bef55d7530a550753",
+				"dweb:/ipfs/QmTYnqWSeCY1o4pxP35iWJJV5Y2ezrHkMULHwgkcTMzynL"
+			]
+		}
+	},
+	"version": 1
+}
